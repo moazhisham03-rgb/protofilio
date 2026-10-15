@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moaz Hisham — Automation & ML</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2EEFF;--ink:#1A1033;--card:#fff;--mut:#5b5278;--violet:#6C47FF;--coral:#FF5D73;--teal:#00A99D;--sun:#FFC53D;--line:#1A103322;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150F2B;--ink:#F4F0FF;--card:#221A42;--mut:#b4abd6;--line:#F4F0FF26}}
+:root[data-theme="dark"]{--bg:#150F2B;--ink:#F4F0FF;--card:#221A42;--mut:#b4abd6;--line:#F4F0FF26}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Bricolage Grotesque","Cairo",system-ui,sans-serif}
+html[lang=ar] body{font-family:"Cairo","Bricolage Grotesque",system-ui,sans-serif}
+html[lang=en] .ar,html[lang=ar] .en{display:none!important}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;gap:12px;flex-wrap:wrap}
+nav b{font-weight:800;font-size:20px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+button,.btn{font:inherit;font-weight:700;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 16px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.primary{background:var(--violet);border-color:var(--violet);color:#fff}
+h1{font-size:clamp(40px,7.5vw,84px);line-height:1.02;margin:10px 0 18px;font-weight:800;letter-spacing:-.025em}
+h1 .c1{color:var(--violet)}h1 .c2{color:var(--coral)}h1 .c3{color:var(--teal)}
+html[lang=ar] h1{letter-spacing:0;line-height:1.25}
+h2{font-size:clamp(28px,4vw,44px);margin:0 0 8px;font-weight:800;letter-spacing:-.015em}
+html[lang=ar] h2{letter-spacing:0}
+.lead{max-width:60ch;color:var(--mut);font-size:19px}
+section{padding:64px 0}
+/* hero canvas */
+.hero{display:grid;grid-template-columns:1fr;gap:20px;padding-top:20px}
+.canvas{background:var(--card);border:2px solid var(--ink);border-radius:24px;padding:14px;background-image:radial-gradient(var(--line) 1.2px,transparent 1.2px);background-size:22px 22px}
+.canvas svg{width:100%;height:auto;display:block}
+.canvas text{font-family:"Bricolage Grotesque","Cairo",sans-serif;fill:var(--ink)}
+.node{fill:var(--card);stroke:var(--ink);stroke-width:2.5}
+.wire{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-dasharray:6 6}
+/* projects */
+.proj{background:var(--card);border:2px solid var(--ink);border-radius:24px;padding:26px;margin-top:26px}
+.tag{display:inline-block;font-weight:700;font-size:14px;padding:2px 12px;border-radius:999px;margin:0 6px 6px 0;color:#1A1033}
+.t1{background:var(--sun)}.t2{background:#9CE8E0}.t3{background:#FFB3BE}.t4{background:#CFC2FF}
+.lanes{display:grid;gap:18px;margin-top:18px}
+.lane{border:2px dashed var(--line);border-radius:16px;padding:14px}
+.lane h4{margin:0 0 10px;font-size:16px}
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{border:2px solid var(--ink);border-radius:12px;padding:6px 12px;font-weight:700;font-size:15px;background:var(--bg)}
+.chip.s{background:var(--sun);color:#1A1033}.chip.v{background:var(--violet);color:#fff;border-color:var(--violet)}.chip.g{background:var(--teal);color:#fff;border-color:var(--teal)}.chip.r{background:var(--coral);color:#fff;border-color:var(--coral)}
+.arr{color:var(--mut);font-weight:800}
+html[dir=rtl] .arr{display:inline-block;transform:scaleX(-1)}
+.steps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 10px}
+.steps button[aria-selected=true]{background:var(--coral);border-color:var(--coral);color:#fff}
+.detail{min-height:4.8em;max-width:62ch;margin:8px 0 0}
+.bars{display:flex;gap:26px;align-items:flex-end;height:120px;margin:18px 0 6px}
+.bar{width:64px;border-radius:10px 10px 0 0;transition:height .5s;color:#fff;text-align:center;font-weight:700;font-size:14px;padding-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:22px}
+.box{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:18px}
+.box h3{margin:0 0 8px;font-size:19px}
+.box ul{margin:0;padding-inline-start:20px;color:var(--mut)}
+.cta{background:var(--violet);color:#fff;border-radius:28px;padding:40px 28px;margin-bottom:40px}
+.cta h2{color:#fff}.cta .btn{background:#fff;color:#1A1033;border-color:#fff;margin:6px 8px 0 0}
+footer{padding:0 0 30px;color:var(--mut);font-size:15px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <b>Moaz<span style="color:var(--coral)">.</span>Hisham</b>
+  <div class="btns">
+    <button id="lang" aria-label="Switch language"><span class="en">عربي</span><span class="ar">English</span></button>
+    <button id="theme" aria-label="Toggle theme">◐</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <h1>
+      <span class="en">I build automations that <span class="c1">think</span> and models that <span class="c2">predict</span>.</span>
+      <span class="ar">بأبني أنظمة أتمتة <span class="c1">بتفكر</span> وموديلات <span class="c2">بتتنبأ</span>.</span>
+    </h1>
+    <p class="lead">
+      <span class="en">Moaz Hisham — Computer Science student at Benha National University, working on n8n AI agents and machine learning. Available for freelance projects.</span>
+      <span class="ar">معاذ هشام — طالب علوم حاسب في جامعة بنها الأهلية، بشتغل على AI agents بـ n8n وتعلم الآلة. متاح لمشاريع فريلانس.</span>
+    </p>
+    <div class="btns" style="margin-top:14px">
+      <a class="btn primary" href="#work"><span class="en">See my work</span><span class="ar">شوف شغلي</span></a>
+      <a class="btn" href="#contact"><span class="en">Hire me</span><span class="ar">كلمني</span></a>
+    </div>
+  </div>
+  <div class="canvas" role="img" aria-label="Animated workflow: a message arrives, the AI agent works, a reply is sent">
+    <svg viewBox="0 0 900 250">
+      <path id="w1" class="wire" d="M200 125 H340"/><path id="w2" class="wire" d="M560 125 H700"/>
+      <path class="wire" d="M450 175 V215"/>
+      <g><rect class="node" x="60" y="80" width="140" height="90" rx="22"/><circle cx="130" cy="112" r="16" fill="#29A9EB"/><text x="130" y="152" text-anchor="middle" font-size="16" font-weight="700"><tspan class="en">Message in</tspan></text></g>
+      <g><rect class="node" x="340" y="60" width="220" height="130" rx="26" style="fill:var(--violet);stroke:var(--violet)"/><text x="450" y="115" text-anchor="middle" font-size="26" font-weight="800" style="fill:#fff">AI Agent</text><text x="450" y="145" text-anchor="middle" font-size="15" style="fill:#fff">Claude · Qdrant · memory</text></g>
+      <g><rect class="node" x="700" y="80" width="140" height="90" rx="22"/><circle cx="770" cy="112" r="16" fill="#00A99D"/><text x="770" y="152" text-anchor="middle" font-size="16" font-weight="700"><tspan class="en">Reply out</tspan></text></g>
+      <circle cx="450" cy="225" r="10" fill="#FFC53D" stroke="#1A1033" stroke-width="2.5"/>
+      <circle r="8" fill="#FF5D73"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#w1"/></animateMotion></circle>
+      <circle r="8" fill="#FFC53D"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite"><mpath href="#w2"/></animateMotion></circle>
+    </svg>
+  </div>
+</header>
+
+<section id="work">
+  <h2><span class="en">Automation</span><span class="ar">الأتمتة</span></h2>
+  <p class="lead"><span class="en">I connect the tools a business already uses so work moves on its own, no copy-paste in between.</span><span class="ar">بربط الأدوات اللي الشركة بتستخدمها أصلاً عشان الشغل يمشي لوحده من غير نسخ ولصق.</span></p>
+  <div class="chain" style="margin-top:14px"><span class="chip v">n8n</span><span class="chip g">Google Sheets</span><span class="chip s">Google Drive</span><span class="chip">Telegram</span><span class="chip r">Claude</span><span class="chip">Gemini</span><span class="chip">Qdrant</span></div>
+  <div class="grid">
+    <div class="box"><h3>Google Sheets</h3><p style="margin:0;color:var(--mut)"><span class="en">Link sheets to other tools so rows sync, update and trigger actions automatically.</span><span class="ar">ربط الشيتات بأدوات تانية عشان الصفوف تتزامن وتتحدث وتشغّل إجراءات أوتوماتيك.</span></p></div>
+    <div class="box"><h3>Google Drive</h3><p style="margin:0;color:var(--mut)"><span class="en">Watch folders and process files the moment they change.</span><span class="ar">مراقبة الفولدرات ومعالجة الملفات أول ما تتغير.</span></p></div>
+    <div class="box"><h3>Telegram &amp; AI agents</h3><p style="margin:0;color:var(--mut)"><span class="en">Chatbots that answer from your own data and remember the conversation.</span><span class="ar">بوتات بترد من بياناتك أنت وبتفتكر المحادثة.</span></p></div>
+  </div>
+  <h3 style="margin:34px 0 0;font-size:22px"><span class="en">One example workflow</span><span class="ar">مثال على workflow</span></h3>
+
+  <article class="proj">
+    <span class="tag t1">n8n</span><span class="tag t2">AI Agent</span><span class="tag t3">RAG</span><span class="tag t4">Telegram</span>
+    <h3 style="margin:6px 0 6px;font-size:26px"><span class="en">Telegram AI assistant that reads your Drive files</span><span class="ar">مساعد تليجرام بيقرا ملفات Drive بتاعتك</span></h3>
+    <p class="lead">
+      <span class="en">Drop a file in Google Drive and the bot learns it. Ask a question on Telegram and the agent searches the stored knowledge, then answers in the chat.</span>
+      <span class="ar">ترفع ملف على Google Drive والبوت يتعلمه. تسأل على تليجرام والـ agent يدوّر في المعرفة المخزنة ويرد عليك في الشات.</span>
+    </p>
+    <div class="lanes">
+      <div class="lane"><h4><span class="en">Lane 1 — Feed the knowledge base</span><span class="ar">المسار 1 — تغذية قاعدة المعرفة</span></h4>
+        <div class="chain"><span class="chip s">Drive: file updated</span><span class="arr">→</span><span class="chip">Download file</span><span class="arr">→</span><span class="chip">Data Loader</span><span class="arr">→</span><span class="chip g">Gemini embeddings</span><span class="arr">→</span><span class="chip r">Qdrant vector store</span></div></div>
+      <div class="lane"><h4><span class="en">Lane 2 — Answer questions</span><span class="ar">المسار 2 — الرد على الأسئلة</span></h4>
+        <div class="chain"><span class="chip s">Telegram trigger</span><span class="arr">→</span><span class="chip v">AI Agent</span><span class="arr">→</span><span class="chip">Send message</span></div>
+        <div class="chain" style="margin-top:10px"><span class="chip">Claude chat model</span><span class="chip r">Qdrant tool</span><span class="chip">Output parser</span><span class="chip">Memory</span></div></div>
+    </div>
+  </article>
+
+  <h2 style="margin-top:56px"><span class="en">Machine learning</span><span class="ar">تعلم الآلة</span></h2>
+  <article class="proj">
+    <span class="tag t1">Python</span><span class="tag t2">scikit-learn</span><span class="tag t3">SMOTE</span><span class="tag t4">GridSearchCV</span>
+    <h3 style="margin:6px 0 6px;font-size:26px"><span class="en">Customer churn prediction</span><span class="ar">توقع مغادرة العملاء (Churn)</span></h3>
+    <p class="lead">
+      <span class="en">A machine learning model that flags customers likely to leave, so a business can act early to keep them. Tap each stage to see what I did.</span>
+      <span class="ar">موديل تعلم آلة بيحدد العملاء اللي ممكن يسيبوا الشركة، عشان الشركة تتصرف بدري وتحافظ عليهم. دوس على كل مرحلة وشوف عملت إيه.</span>
+    </p>
+    <div class="steps" role="tablist" id="steps"></div>
+    <p class="detail" id="detail"></p>
+    <div class="bars" aria-hidden="true">
+      <div class="bar" id="b1" style="background:var(--teal)"></div><div class="bar" id="b2" style="background:var(--coral)"></div>
+    </div>
+    <p style="color:var(--mut);font-size:14px;margin:0"><span class="en">Illustration: SMOTE balances the two classes (stay vs. leave) before training.</span><span class="ar">توضيح: SMOTE بيوازن الفئتين (يفضل / يمشي) قبل التدريب.</span></p>
+  </article>
+</section>
+
+<section>
+  <h2><span class="en">What I work with</span><span class="ar">بشتغل بإيه</span></h2>
+  <div class="grid">
+    <div class="box"><h3><span class="en">Automation</span><span class="ar">الأتمتة</span></h3><ul><li>n8n workflows</li><li>Google Sheets &amp; Drive</li><li>Telegram bots</li><li>Google Drive triggers</li><li>AI agents with memory</li></ul></div>
+    <div class="box"><h3><span class="en">Machine learning</span><span class="ar">تعلم الآلة</span></h3><ul><li>EDA &amp; feature engineering</li><li>SMOTE, GridSearchCV</li><li>Model comparison &amp; metrics</li><li>Cisco: Intro to Data Science</li></ul></div>
+    <div class="box"><h3><span class="en">Foundations</span><span class="ar">الأساسيات</span></h3><ul><li>Python, C++</li><li>Database systems</li><li>CCNA: Introduction to Networks</li><li>Teamwork &amp; adaptability</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="en">Background</span><span class="ar">الخلفية</span></h2>
+  <div class="grid">
+    <div class="box"><h3>BSc Computer Science</h3><p style="margin:0;color:var(--mut)">Benha National University · 2024 – <span class="en">present (expected 2028)</span><span class="ar">الآن (التخرج المتوقع 2028)</span></p></div>
+    <div class="box"><h3><span class="en">Intern, Petrogelf Masr</span><span class="ar">متدرب في Petrogelf Masr</span></h3><p style="margin:0;color:var(--mut)"><span class="en">2025 · worked on real projects inside a professional team.</span><span class="ar">2025 · اشتغلت على مشاريع حقيقية جوه فريق محترف.</span></p></div>
+    <div class="box"><h3>Google Developer Groups, BNU</h3><p style="margin:0;color:var(--mut)"><span class="en">Member since 2024 · workshops, tech sessions, peer projects.</span><span class="ar">عضو من 2024 · ورش وجلسات تقنية ومشاريع مع زمايلي.</span></p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cta">
+    <h2><span class="en">Have a process that should run itself?</span><span class="ar">عندك شغل المفروض يشتغل لوحده؟</span></h2>
+    <p style="max-width:56ch"><span class="en">Tell me what you do by hand today. I'll tell you what we can automate.</span><span class="ar">قولي بتعمل إيه يدوي دلوقتي، وأنا أقولك إيه اللي نقدر نأتمته.</span></p>
+    <a class="btn" href="mailto:moazhisham03@gmail.com">moazhisham03@gmail.com</a>
+    <a class="btn" href="tel:+201114768313" dir="ltr">+20 111 476 8313</a>
+    <a class="btn" href="https://www.linkedin.com/in/moaz-hisham-6bba5a332/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <footer>© Moaz Hisham · Cairo, Egypt</footer>
+</section>
+</div>
+
+<script>
+const S=[
+["Explore","استكشاف","Exploratory data analysis to understand who leaves and what patterns show up in the data.","تحليل استكشافي للبيانات عشان أفهم مين بيمشي وإيه الأنماط اللي ظاهرة."],
+["Clean","تنضيف","Data cleaning and preprocessing: handling missing values and preparing columns for modeling.","تنضيف ومعالجة البيانات: التعامل مع القيم الناقصة وتجهيز الأعمدة للموديل."],
+["Engineer","هندسة الميزات","Feature engineering to give the models more useful signals.","هندسة الميزات (Feature Engineering) عشان الموديلات تاخد إشارات أنفع."],
+["Balance","موازنة","Handling imbalanced data with SMOTE, because far fewer customers leave than stay.","التعامل مع البيانات غير المتوازنة بـ SMOTE، لأن اللي بيمشي أقل بكتير من اللي بيفضل."],
+["Train","تدريب","Training several machine learning models and comparing them side by side.","تدريب كذا موديل تعلم آلة ومقارنتهم ببعض."],
+["Tune","ضبط","Hyperparameter tuning with GridSearchCV to get more from the best models.","ضبط الـ Hyperparameters بـ GridSearchCV عشان أطلع أفضل أداء من أحسن الموديلات."],
+["Evaluate","تقييم","Evaluating with different performance metrics, not just accuracy.","التقييم بمقاييس أداء مختلفة، مش الـ accuracy بس."]];
+const $=id=>document.getElementById(id),root=document.documentElement;
+let cur=0;
+function draw(){
+  const ar=root.lang==="ar";
+  $("steps").innerHTML=S.map((s,i)=>`<button role="tab" aria-selected="${i===cur}" data-i="${i}">${s[ar?1:0]}</button>`).join("");
+  $("detail").textContent=S[cur][ar?3:2];
+  const b=cur>=3;
+  $("b1").style.height="110px";$("b1").textContent=ar?"يفضل":"Stay";
+  $("b2").style.height=b?"100px":"24px";$("b2").textContent=ar?"يمشي":"Leave";
+}
+$("steps").onclick=e=>{const t=e.target.closest("button");if(t){cur=+t.dataset.i;draw()}};
+$("lang").onclick=()=>{const ar=root.lang!=="ar";root.lang=ar?"ar":"en";root.dir=ar?"rtl":"ltr";try{localStorage.setItem("lang",root.lang)}catch(e){}draw()};
+$("theme").onclick=()=>{const d=root.dataset.theme==="dark"||(!root.dataset.theme&&matchMedia("(prefers-color-scheme:dark)").matches);root.dataset.theme=d?"light":"dark"};
+try{if(localStorage.getItem("lang")==="ar"){root.lang="ar";root.dir="rtl"}}catch(e){}
+draw();
+</script>
+</body>
+</html>
