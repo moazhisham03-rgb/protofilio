@@ -61,10 +61,49 @@ html[dir=rtl] .arr{display:inline-block;transform:scaleX(-1)}
 .cta{background:var(--violet);color:#fff;border-radius:28px;padding:40px 28px;margin-bottom:40px}
 .cta h2{color:#fff}.cta .btn{background:#fff;color:#1A1033;border-color:#fff;margin:6px 8px 0 0}
 footer{padding:0 0 30px;color:var(--mut);font-size:15px}
+/* client-focused polish */
+html{scroll-behavior:smooth}
+.progress-track{position:fixed;top:0;left:0;right:0;height:4px;z-index:1000;background:transparent}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--violet),var(--coral),var(--teal));transition:width .1s linear}
+nav{position:sticky;top:0;z-index:50;background:var(--bg);background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:800;background:var(--card);margin-bottom:14px}
+.pulse{width:9px;height:9px;background:var(--teal);border-radius:50%;box-shadow:0 0 0 5px color-mix(in srgb,var(--teal) 18%,transparent)}
+.hero-points{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.hero-points span{font-size:14px;font-weight:800;padding:7px 11px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.box,.proj,.lane{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.box:hover,.proj:hover{transform:translateY(-4px);box-shadow:0 16px 35px color-mix(in srgb,var(--violet) 12%,transparent);border-color:var(--violet)}
+.section-kicker{color:var(--violet);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.outcome{position:relative;overflow:hidden}.outcome:after{content:'';position:absolute;width:90px;height:90px;border-radius:50%;background:color-mix(in srgb,var(--violet) 10%,transparent);right:-28px;top:-28px}.outcome .symbol{font-size:26px;margin-bottom:10px;display:block}
+.filterbar{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 8px}.filterbar button{font-size:14px}.filterbar button[aria-pressed="true"]{background:var(--violet);border-color:var(--violet);color:#fff}
+.project-card[hidden]{display:none!important}
+.process{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px;counter-reset:process}
+.process-step{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:18px;counter-increment:process}
+.process-step:before{content:'0' counter(process);display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--violet);color:white;font-weight:800;margin-bottom:12px}
+.faq{margin-top:20px;display:grid;gap:10px}.faq details{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:16px 18px}.faq summary{font-weight:800;cursor:pointer}.faq details p{color:var(--mut);margin-bottom:0}
+.back-top{position:fixed;bottom:18px;right:18px;z-index:40;width:46px;height:46px;padding:0;border-radius:50%;background:var(--violet);color:white;border-color:var(--violet);box-shadow:0 8px 24px #0002;display:none}.back-top.show{display:block}
+@media(max-width:700px){.process{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-points span{font-size:12px}.proj{padding:18px}}
+@media(max-width:420px){.process{grid-template-columns:1fr}}
+
+/* practical conversion features */
+.roi-panel{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start;background:var(--card);border:2px solid var(--ink);border-radius:24px;padding:24px;margin-top:22px}
+.roi-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:6px}.field label{font-size:14px;font-weight:800}.field input,.field select,.field textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px 12px;min-width:0}
+.roi-results{background:var(--bg);border-radius:18px;padding:20px;border:1px solid var(--line)}
+.roi-number{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--violet);line-height:1.2;overflow-wrap:anywhere}
+.roi-stat{padding:14px 0;border-bottom:1px solid var(--line)}.roi-stat:last-child{border-bottom:0}
+.delivery-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.delivery-item{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.delivery-item strong{display:block}.delivery-item span{color:var(--mut);font-size:14px}
+.brief-form{background:var(--card);color:var(--ink);border-radius:20px;padding:22px;margin-top:22px}
+.brief-form .field{margin-bottom:14px}.brief-form .field textarea{min-height:110px;resize:vertical}
+@media(max-width:700px){.roi-panel{grid-template-columns:1fr;padding:17px}.roi-fields{grid-template-columns:1fr 1fr}.delivery-list{grid-template-columns:1fr}}
+@media(max-width:420px){.roi-fields{grid-template-columns:1fr}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
+<div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+<button class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
 <div class="wrap">
 <nav>
   <b>Moaz<span style="color:var(--coral)">.</span>Hisham</b>
@@ -76,6 +115,7 @@ footer{padding:0 0 30px;color:var(--mut);font-size:15px}
 
 <header class="hero">
   <div>
+    <div class="eyebrow"><span class="pulse"></span><span class="en">AI AUTOMATION · MACHINE LEARNING</span><span class="ar">أتمتة ذكية · تعلم الآلة</span></div>
     <h1>
       <span class="en">I build automations that <span class="c1">think</span> and models that <span class="c2">predict</span>.</span>
       <span class="ar">بأبني أنظمة أتمتة <span class="c1">بتفكر</span> وموديلات <span class="c2">بتتنبأ</span>.</span>
@@ -88,6 +128,7 @@ footer{padding:0 0 30px;color:var(--mut);font-size:15px}
       <a class="btn primary" href="#work"><span class="en">See my work</span><span class="ar">شوف شغلي</span></a>
       <a class="btn" href="#contact"><span class="en">Hire me</span><span class="ar">كلمني</span></a>
     </div>
+    <div class="hero-points"><span>⚙️ n8n Workflows</span><span>🤖 AI Agents</span><span>🔌 API Integrations</span><span>📊 Machine Learning</span></div>
   </div>
   <div class="canvas" role="img" aria-label="Animated workflow: a message arrives, the AI agent works, a reply is sent">
     <svg viewBox="0 0 900 250">
@@ -103,6 +144,17 @@ footer{padding:0 0 30px;color:var(--mut);font-size:15px}
   </div>
 </header>
 
+<section id="value">
+  <div class="section-kicker"><span class="en">WHY WORK WITH ME</span><span class="ar">ليه تشتغل معايا؟</span></div>
+  <h2><span class="en">Less busywork. More momentum.</span><span class="ar">شغل يدوي أقل، وإنجاز أسرع.</span></h2>
+  <p class="lead"><span class="en">I focus on practical systems that solve a real workflow problem—not automation just for the sake of it.</span><span class="ar">بركز على حلول عملية بتحل مشكلة فعلية في الشغل، مش أتمتة لمجرد الأتمتة.</span></p>
+  <div class="grid">
+    <div class="box outcome"><span class="symbol">⏱️</span><h3><span class="en">Save repetitive effort</span><span class="ar">قلل التكرار اليدوي</span></h3><p style="color:var(--mut);margin:0"><span class="en">Turn recurring steps into workflows that run consistently.</span><span class="ar">حوّل الخطوات المتكررة لورك فلو ينفذها بشكل منتظم.</span></p></div>
+    <div class="box outcome"><span class="symbol">🔗</span><h3><span class="en">Connect your tools</span><span class="ar">اربط أدواتك ببعض</span></h3><p style="color:var(--mut);margin:0"><span class="en">Move information between messaging, spreadsheets, storage and APIs.</span><span class="ar">انقل البيانات بين تطبيقات المراسلة والشيتات والتخزين والـ APIs.</span></p></div>
+    <div class="box outcome"><span class="symbol">🧠</span><h3><span class="en">Add AI where it helps</span><span class="ar">استخدم الذكاء الاصطناعي في مكانه</span></h3><p style="color:var(--mut);margin:0"><span class="en">Use AI agents and ML models for useful tasks, with a clear purpose.</span><span class="ar">استخدم AI Agents وموديلات تعلم الآلة في مهام مفيدة بهدف واضح.</span></p></div>
+  </div>
+</section>
+
 <section id="work">
   <h2><span class="en">Automation</span><span class="ar">الأتمتة</span></h2>
   <p class="lead"><span class="en">I connect the tools a business already uses so work moves on its own, no copy-paste in between.</span><span class="ar">بربط الأدوات اللي الشركة بتستخدمها أصلاً عشان الشغل يمشي لوحده من غير نسخ ولصق.</span></p>
@@ -112,6 +164,21 @@ footer{padding:0 0 30px;color:var(--mut);font-size:15px}
     <div class="box"><h3>Google Drive</h3><p style="margin:0;color:var(--mut)"><span class="en">Watch folders and process files the moment they change.</span><span class="ar">مراقبة الفولدرات ومعالجة الملفات أول ما تتغير.</span></p></div>
     <div class="box"><h3>Telegram &amp; AI agents</h3><p style="margin:0;color:var(--mut)"><span class="en">Chatbots that answer from your own data and remember the conversation.</span><span class="ar">بوتات بترد من بياناتك أنت وبتفتكر المحادثة.</span></p></div>
   </div>
+
+  <h3 style="margin:38px 0 0;font-size:26px"><span class="en">Automation projects</span><span class="ar">مشاريع أتمتة عملية</span></h3>
+  <p class="lead"><span class="en">Practical workflows that connect messaging, spreadsheets, cloud storage and APIs to turn manual steps into reliable processes.</span><span class="ar">ورك فلو عملية بتربط تطبيقات المراسلة والشيتات والتخزين السحابي والـ APIs لتحويل الخطوات اليدوية لعمليات مترابطة وأوتوماتيكية.</span></p>
+  <div class="filterbar" id="projectFilters" aria-label="Filter automation projects">
+    <button type="button" data-filter="all" aria-pressed="true"><span class="en">All projects</span><span class="ar">كل المشاريع</span></button>
+    <button type="button" data-filter="scheduled" aria-pressed="false">Scheduled</button>
+    <button type="button" data-filter="api" aria-pressed="false">API &amp; Telegram</button>
+    <button type="button" data-filter="webhook" aria-pressed="false">Webhook &amp; Drive</button>
+  </div>
+  <div class="grid" id="automationProjects">
+    <div class="box project-card" data-project="scheduled"><span class="tag t1">Scheduled automation</span><h3><span class="en">Automated Google Sheets alerts</span><span class="ar">تنبيهات تلقائية من Google Sheets</span></h3><p style="color:var(--mut);margin:0 0 12px"><span class="en">A scheduled workflow reads spreadsheet rows, checks conditions, and sends the relevant updates to Telegram.</span><span class="ar">ورك فلو بيفحص صفوف Google Sheets في مواعيد محددة، ويتحقق من الشروط، ويبعت التنبيهات المناسبة على Telegram.</span></p><div class="chain"><span class="chip s">Schedule</span><span class="arr">→</span><span class="chip g">Google Sheets</span><span class="arr">→</span><span class="chip">IF conditions</span><span class="arr">→</span><span class="chip v">Telegram</span></div></div>
+    <div class="box project-card" data-project="api"><span class="tag t2">API integration</span><h3><span class="en">Telegram booking &amp; data logging</span><span class="ar">استقبال طلبات وتسجيلها</span></h3><p style="color:var(--mut);margin:0 0 12px"><span class="en">Processes incoming Telegram messages, combines spreadsheet data, calls an external API, then returns a response and logs the result.</span><span class="ar">بيعالج رسائل Telegram، ويجمع البيانات من الشيت، ويتصل بـ API خارجي، وبعدها يبعت الرد ويسجل النتيجة.</span></p><div class="chain"><span class="chip">Telegram</span><span class="arr">→</span><span class="chip g">Sheets</span><span class="arr">→</span><span class="chip v">API</span><span class="arr">→</span><span class="chip r">Reply + log</span></div></div>
+    <div class="box project-card" data-project="webhook"><span class="tag t3">Webhook workflow</span><h3><span class="en">Webhook-driven file &amp; email workflow</span><span class="ar">أتمتة الملفات والإيميلات باستخدام Webhook</span></h3><p style="color:var(--mut);margin:0 0 12px"><span class="en">Receives a webhook event, records the request in a sheet, searches Google Drive for matching files, downloads the file and prepares an email step.</span><span class="ar">بيستقبل حدث من Webhook، ويسجل الطلب في Sheet، ويدور على الملفات المطابقة في Google Drive، وينزل الملف ويجهز خطوة إرسال الإيميل.</span></p><div class="chain"><span class="chip s">Webhook</span><span class="arr">→</span><span class="chip g">Sheets</span><span class="arr">→</span><span class="chip">Drive search</span><span class="arr">→</span><span class="chip r">Email</span></div></div>
+  </div>
+
   <h3 style="margin:34px 0 0;font-size:22px"><span class="en">One example workflow</span><span class="ar">مثال على workflow</span></h3>
 
   <article class="proj">
@@ -160,8 +227,55 @@ footer{padding:0 0 30px;color:var(--mut);font-size:15px}
   <h2><span class="en">Background</span><span class="ar">الخلفية</span></h2>
   <div class="grid">
     <div class="box"><h3>BSc Computer Science</h3><p style="margin:0;color:var(--mut)">Benha National University · 2024 – <span class="en">present (expected 2028)</span><span class="ar">الآن (التخرج المتوقع 2028)</span></p></div>
+    <div class="box"><h3><span class="en">AI &amp; Automation Intern — NTI</span><span class="ar">متدرب ذكاء اصطناعي وأتمتة — NTI</span></h3><p style="margin:0;color:var(--mut)"><span class="en">Professional training focused on building practical automation workflows and connecting tools, APIs and AI-powered services.</span><span class="ar">تدريب متخصص في بناء حلول أتمتة عملية وربط الأدوات والـ APIs وخدمات الذكاء الاصطناعي.</span></p></div>
     <div class="box"><h3><span class="en">Intern, Petrogelf Masr</span><span class="ar">متدرب في Petrogelf Masr</span></h3><p style="margin:0;color:var(--mut)"><span class="en">2025 · worked on real projects inside a professional team.</span><span class="ar">2025 · اشتغلت على مشاريع حقيقية جوه فريق محترف.</span></p></div>
     <div class="box"><h3>Google Developer Groups, BNU</h3><p style="margin:0;color:var(--mut)"><span class="en">Member since 2024 · workshops, tech sessions, peer projects.</span><span class="ar">عضو من 2024 · ورش وجلسات تقنية ومشاريع مع زمايلي.</span></p></div>
+  </div>
+</section>
+
+
+<section id="impact">
+  <div class="section-kicker"><span class="en">MAKE THE VALUE VISIBLE</span><span class="ar">احسب قيمة وقتك</span></div>
+  <h2><span class="en">What could automation give back to your team?</span><span class="ar">الأتمتة ممكن توفر لفريقك وقت قد إيه؟</span></h2>
+  <p class="lead"><span class="en">Estimate the time currently spent on repetitive tasks. This is an illustrative estimate—not a guaranteed saving or a project quote.</span><span class="ar">احسب بشكل تقريبي الوقت اللي بيروح في المهام المتكررة. دي حسبة توضيحية مش وعد بتوفير مضمون ولا عرض سعر.</span></p>
+  <div class="roi-panel">
+    <div class="roi-fields">
+      <div class="field"><label for="taskCount"><span class="en">Tasks per week</span><span class="ar">عدد مرات المهمة أسبوعيًا</span></label><input id="taskCount" type="number" min="0" max="100000" value="50"></div>
+      <div class="field"><label for="taskMinutes"><span class="en">Minutes per task</span><span class="ar">دقايق لكل مرة</span></label><input id="taskMinutes" type="number" min="0" max="100000" value="8"></div>
+      <div class="field"><label for="teamCount"><span class="en">People doing it</span><span class="ar">عدد الأشخاص</span></label><input id="teamCount" type="number" min="1" max="10000" value="1"></div>
+      <div class="field"><label for="hourCost"><span class="en">Cost per hour (EGP)</span><span class="ar">تكلفة الساعة (جنيه)</span></label><input id="hourCost" type="number" min="0" max="10000000" value="100"></div>
+    </div>
+    <div class="roi-results" aria-live="polite">
+      <div class="section-kicker"><span class="en">YOUR CURRENT MANUAL LOAD</span><span class="ar">الوقت اليدوي الحالي</span></div>
+      <div class="roi-stat"><div class="roi-number" id="monthlyHours">—</div><div><span class="en">hours per month spent on this task</span><span class="ar">ساعة شهريًا في المهمة دي</span></div></div>
+      <div class="roi-stat"><div class="roi-number" id="monthlyCost">—</div><div><span class="en">EGP estimated time cost per month</span><span class="ar">جنيه تكلفة وقت تقديرية شهريًا</span></div></div>
+      <p style="font-size:13px;color:var(--mut);margin:12px 0 0"><span class="en">Assumes 4.33 weeks per month. Actual savings depend on what can safely be automated.</span><span class="ar">الحسبة على أساس 4.33 أسبوع في الشهر. التوفير الفعلي بيتوقف على الجزء اللي ينفع يتأتمت بأمان.</span></p>
+      <a class="btn primary" href="#contact" style="margin-top:14px"><span class="en">Discuss this workflow</span><span class="ar">ناقش معايا الأتمتة دي</span></a>
+    </div>
+  </div>
+  <h3 style="margin:38px 0 0;font-size:24px"><span class="en">A handover you can actually use</span><span class="ar">تسليم تقدر تعتمد عليه</span></h3>
+  <div class="delivery-list">
+    <div class="delivery-item"><span>✓</span><div><strong><span class="en">Workflow setup</span><span class="ar">إعداد الـ Workflow</span></strong><span><span class="en">Clear triggers, logic and connected services.</span><span class="ar">Triggers ومنطق واضح وربط الخدمات المطلوبة.</span></span></div></div>
+    <div class="delivery-item"><span>✓</span><div><strong><span class="en">Testing &amp; edge cases</span><span class="ar">اختبار الحالات المختلفة</span></strong><span><span class="en">Check expected inputs and common failure scenarios.</span><span class="ar">اختبار المدخلات المتوقعة وحالات الخطأ الشائعة.</span></span></div></div>
+    <div class="delivery-item"><span>✓</span><div><strong><span class="en">Documentation</span><span class="ar">توثيق الحل</span></strong><span><span class="en">A practical guide to understand and maintain the flow.</span><span class="ar">شرح عملي لفهم الـ workflow وصيانته.</span></span></div></div>
+    <div class="delivery-item"><span>✓</span><div><strong><span class="en">Handover &amp; next steps</span><span class="ar">التسليم والخطوات التالية</span></strong><span><span class="en">Walk through how to operate it and what to monitor.</span><span class="ar">توضيح التشغيل وإيه اللي يحتاج متابعة.</span></span></div></div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-kicker"><span class="en">A CLEAR PROCESS</span><span class="ar">خطوات واضحة</span></div>
+  <h2><span class="en">From messy process to working system.</span><span class="ar">من خطوات ملخبطة لنظام شغال.</span></h2>
+  <div class="process">
+    <div class="process-step"><h3><span class="en">Discover</span><span class="ar">نفهم المشكلة</span></h3><p style="color:var(--mut);margin:0"><span class="en">Map the current process and define the goal.</span><span class="ar">نفهم طريقة الشغل الحالية ونحدد الهدف.</span></p></div>
+    <div class="process-step"><h3><span class="en">Design</span><span class="ar">نصمم الحل</span></h3><p style="color:var(--mut);margin:0"><span class="en">Choose the right triggers, integrations and logic.</span><span class="ar">نحدد الـ triggers والتكاملات والمنطق المناسب.</span></p></div>
+    <div class="process-step"><h3><span class="en">Build &amp; test</span><span class="ar">نبني ونختبر</span></h3><p style="color:var(--mut);margin:0"><span class="en">Build the workflow and test expected scenarios.</span><span class="ar">نبني الـ workflow ونختبر السيناريوهات المتوقعة.</span></p></div>
+    <div class="process-step"><h3><span class="en">Hand over</span><span class="ar">نسلّم الحل</span></h3><p style="color:var(--mut);margin:0"><span class="en">Explain how it works and what to monitor.</span><span class="ar">أوضح طريقة التشغيل والحاجات اللي لازم تتابعها.</span></p></div>
+  </div>
+  <h2 style="margin-top:56px"><span class="en">Quick questions</span><span class="ar">أسئلة سريعة</span></h2>
+  <div class="faq">
+    <details><summary><span class="en">Can you connect tools I already use?</span><span class="ar">ينفع تربط الأدوات اللي بستخدمها بالفعل؟</span></summary><p><span class="en">Usually, if the tools provide an API, webhook or supported integration. I’ll check the requirements before promising a specific connection.</span><span class="ar">غالبًا ينفع لو الأدوات بتوفر API أو Webhook أو تكامل مدعوم. بنراجع المتطلبات قبل ما نأكد إمكانية الربط.</span></p></details>
+    <details><summary><span class="en">Can an automation include AI?</span><span class="ar">هل ممكن الـ workflow يستخدم AI؟</span></summary><p><span class="en">Yes. AI can classify messages, extract information, answer from a knowledge base or support a larger workflow when it fits the use case.</span><span class="ar">أيوه، ممكن الـ AI يصنف الرسائل، يستخرج بيانات، يجاوب من قاعدة معرفة أو يساعد في workflow أكبر حسب طبيعة المهمة.</span></p></details>
+    <details><summary><span class="en">What do you need to get started?</span><span class="ar">محتاج إيه عشان نبدأ؟</span></summary><p><span class="en">A short description of the manual process, the tools involved and what a successful result should look like.</span><span class="ar">وصف بسيط للخطوات اليدوية، والأدوات المستخدمة، وشكل النتيجة المطلوبة.</span></p></details>
   </div>
 </section>
 
@@ -169,6 +283,14 @@ footer{padding:0 0 30px;color:var(--mut);font-size:15px}
   <div class="cta">
     <h2><span class="en">Have a process that should run itself?</span><span class="ar">عندك شغل المفروض يشتغل لوحده؟</span></h2>
     <p style="max-width:56ch"><span class="en">Tell me what you do by hand today. I'll tell you what we can automate.</span><span class="ar">قولي بتعمل إيه يدوي دلوقتي، وأنا أقولك إيه اللي نقدر نأتمته.</span></p>
+    <div class="brief-form">
+      <h3 style="margin-top:0"><span class="en">Tell me about your project</span><span class="ar">احكيلي عن مشروعك</span></h3>
+      <div class="field"><label for="briefType"><span class="en">What do you need?</span><span class="ar">محتاج إيه؟</span></label><select id="briefType"><option value="AI agent / chatbot">AI agent / chatbot</option><option value="n8n workflow automation">n8n workflow automation</option><option value="API integration">API integration</option><option value="Google Sheets / Drive automation">Google Sheets / Drive automation</option><option value="Machine learning solution">Machine learning solution</option><option value="Not sure yet">Not sure yet</option></select></div>
+      <div class="field"><label for="briefTools"><span class="en">Tools you use</span><span class="ar">الأدوات اللي بتستخدمها</span></label><input id="briefTools" placeholder="e.g. Telegram, Google Sheets, Shopify"></div>
+      <div class="field"><label for="briefProblem"><span class="en">What should the system do?</span><span class="ar">عايز النظام يعمل إيه؟</span></label><textarea id="briefProblem" placeholder="Describe the repetitive task or problem..."></textarea></div>
+      <button class="btn primary" type="button" id="sendBrief"><span class="en">Prepare project email ↗</span><span class="ar">جهّز إيميل بالمشروع ↗</span></button>
+      <p id="briefHint" style="font-size:13px;color:var(--mut);margin-bottom:0"><span class="en">This opens your email app with a draft—you can review it before sending.</span><span class="ar">هيفتح برنامج الإيميل برسالة جاهزة تراجعها قبل الإرسال.</span></p>
+    </div>
     <a class="btn" href="mailto:moazhisham03@gmail.com">moazhisham03@gmail.com</a>
     <a class="btn" href="tel:+201114768313" dir="ltr">+20 111 476 8313</a>
     <a class="btn" href="https://www.linkedin.com/in/moaz-hisham-6bba5a332/" target="_blank" rel="noopener">LinkedIn</a>
@@ -178,6 +300,35 @@ footer{padding:0 0 30px;color:var(--mut);font-size:15px}
 </div>
 
 <script>
+const progressFill=document.getElementById('progressFill');
+const backTop=document.getElementById('backTop');
+function updateScrollUI(){const max=document.documentElement.scrollHeight-window.innerHeight;progressFill.style.width=(max>0?(window.scrollY/max)*100:0)+'%';backTop.classList.toggle('show',window.scrollY>500)}
+window.addEventListener('scroll',updateScrollUI,{passive:true});updateScrollUI();
+backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const filterButtons=[...document.querySelectorAll('#projectFilters [data-filter]')];
+const projectCards=[...document.querySelectorAll('#automationProjects .project-card')];
+filterButtons.forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;filterButtons.forEach(b=>b.setAttribute('aria-pressed',String(b===button)));projectCards.forEach(card=>card.hidden=filter!=='all'&&card.dataset.project!==filter)}));
+
+const roiInputs=['taskCount','taskMinutes','teamCount','hourCost'].map(id=>document.getElementById(id));
+function updateROI(){
+  const [tasks,minutes,people,cost]=roiInputs.map(el=>Math.max(0,Number(el.value)||0));
+  const hours=tasks*minutes*people*4.33/60;
+  const money=hours*cost;
+  const ar=document.documentElement.lang==='ar';
+  document.getElementById('monthlyHours').textContent=hours.toLocaleString(ar?'ar-EG':'en-US',{maximumFractionDigits:1});
+  document.getElementById('monthlyCost').textContent=money.toLocaleString(ar?'ar-EG':'en-US',{maximumFractionDigits:0});
+}
+roiInputs.forEach(el=>el.addEventListener('input',updateROI));updateROI();
+document.getElementById('sendBrief').addEventListener('click',()=>{
+  const type=document.getElementById('briefType').value;
+  const tools=document.getElementById('briefTools').value.trim()||'Not specified';
+  const problem=document.getElementById('briefProblem').value.trim()||'I would like to discuss a possible automation project.';
+  const ar=document.documentElement.lang==='ar';
+  const subject=encodeURIComponent((ar?'استفسار عن مشروع: ':'Project inquiry: ')+type);
+  const body=encodeURIComponent((ar?'نوع المشروع: ':'Project type: ')+type+'\n'+(ar?'الأدوات المستخدمة: ':'Tools involved: ')+tools+'\n'+(ar?'المطلوب: ':'Goal / problem: ')+problem);
+  window.location.href='mailto:moazhisham03@gmail.com?subject='+subject+'&body='+body;
+});
+
 const S=[
 ["Explore","استكشاف","Exploratory data analysis to understand who leaves and what patterns show up in the data.","تحليل استكشافي للبيانات عشان أفهم مين بيمشي وإيه الأنماط اللي ظاهرة."],
 ["Clean","تنضيف","Data cleaning and preprocessing: handling missing values and preparing columns for modeling.","تنضيف ومعالجة البيانات: التعامل مع القيم الناقصة وتجهيز الأعمدة للموديل."],
@@ -197,7 +348,7 @@ function draw(){
   $("b2").style.height=b?"100px":"24px";$("b2").textContent=ar?"يمشي":"Leave";
 }
 $("steps").onclick=e=>{const t=e.target.closest("button");if(t){cur=+t.dataset.i;draw()}};
-$("lang").onclick=()=>{const ar=root.lang!=="ar";root.lang=ar?"ar":"en";root.dir=ar?"rtl":"ltr";try{localStorage.setItem("lang",root.lang)}catch(e){}draw()};
+$("lang").onclick=()=>{const ar=root.lang!=="ar";root.lang=ar?"ar":"en";root.dir=ar?"rtl":"ltr";try{localStorage.setItem("lang",root.lang)}catch(e){}draw();updateROI()};
 $("theme").onclick=()=>{const d=root.dataset.theme==="dark"||(!root.dataset.theme&&matchMedia("(prefers-color-scheme:dark)").matches);root.dataset.theme=d?"light":"dark"};
 try{if(localStorage.getItem("lang")==="ar"){root.lang="ar";root.dir="rtl"}}catch(e){}
 draw();
